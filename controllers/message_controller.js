@@ -1,8 +1,17 @@
 const Message = require("../models/message");
 
-exports.new_message_get = (req, res, next) => {
+exports.new_message_get = async (req, res, next) => {
   if (req.user) {
-    res.render("members");
+    try {
+      const messages = await Message.find()
+        .sort({ date: 1 })
+        .populate("author", "username")
+        .exec();
+
+      res.render("members", { messages });
+    } catch (error) {
+      next(error);
+    }
   } else {
     res.redirect("/");
   }

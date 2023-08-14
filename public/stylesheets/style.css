@@ -38,6 +38,10 @@ a {
   cursor: pointer;
 }
 
+.navbar-members {
+  font-size: 1.8em;
+}
+
 .btn {
   font-weight: bold;
   min-width: 80px;
@@ -77,4 +81,17 @@ a {
 
 .form-btn {
   width: 80px;
+}
+
+.message-board {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3em;
+}
+
+.message-board-message {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  margin-bottom: 3em;
 }

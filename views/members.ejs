@@ -36,6 +36,16 @@
             </form>
           </div>
         </div>
+        <div class="message-board">
+          <% messages.forEach((message) => { %>
+            <div class="message-board-message">
+              <span>User: <%= message.author.username %></span>
+              <span>Title: <%= message.title %></span>
+              <span>Message: <%= message.body %></span>
+              <span>Date: <%= message.timestamp %></span>
+            </div>
+          <% }) %>
+        </div>
     </main>
   </body>
 </html>
