@@ -1,54 +1,23 @@
 const express = require("express");
 const router = express.Router();
-const passport = require("passport");
 const bcrypt = require("bcryptjs");
 
-const User = require("../models/user");
+const sign_up_controller = require("../controllers/sing_up_controller");
+const log_in_out_controller = require("../controllers/log_in_out_controller");
 
 router.get("/", function (req, res, next) {
   res.render("index");
 });
 
-router.get("/sign-up", function (req, res, next) {
-  res.render("sign-up");
-});
+router.get("/sign-up", sign_up_controller.new_user_get);
 
-router.post("/sign-up", async (req, res, next) => {
-  try {
-    const hashedPassword = await bcrypt.hash(`${req.body.password}`, 10);
+router.post("/sign-up", sign_up_controller.new_user_post);
 
-    const user = new User({
-      username: req.body.username,
-      password: hashedPassword,
-    });
+router.get("/log-in", log_in_out_controller.log_in_get);
 
-    const result = await user.save();
-    res.redirect("/");
-  } catch (err) {
-    return next(err);
-  }
-});
+router.post("/log-in", log_in_out_controller.log_in_post);
 
-router.get("/log-in", (req, res, next) => {
-  res.render("log-in");
-});
-
-router.post(
-  "/log-in",
-  passport.authenticate("local", {
-    successRedirect: "/members",
-    failureRedirect: "/",
-  })
-);
-
-router.get("/log-out", (req, res, next) => {
-  req.logout(function (err) {
-    if (err) {
-      return next(err);
-    }
-    res.redirect("/");
-  });
-});
+router.get("/log-out", log_in_out_controller.log_out_get);
 
 router.get("/members", (req, res, next) => {
   res.render("members");
