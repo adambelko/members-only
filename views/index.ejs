@@ -1,11 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <title>Members Only App</title>
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <nav class="navbar">
+      <div class="navbar-wrapper">
+        <a href="/"><h1 class="navbar-title">Members Only</h1></a>
+        <div class="navbar-btn-wrapper">
+          <a href="/log-in"><button class="navbar-btn btn">Log In</button></a>
+          <a href="/sign-up"><button class="navbar-btn btn">Sign Up</button></a>
+        </div>
+      </div>
+    </nav>
+    <main class="main">
+      <% if (user) { %>
+        <h1>WELCOME BACK <%= user.username %></h1>
+      <% } %>
+    </main>
   </body>
 </html>

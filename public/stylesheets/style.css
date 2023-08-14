@@ -1,8 +1,80 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: "Secular One", sans-serif;
+  font-size: 14px;
+  box-sizing: border-box;
+  height: 100%;
+  background: #fafafa;
 }
 
 a {
-  color: #00B7FF;
+  color: #00b7ff;
+  text-decoration: none;
+}
+
+.navbar {
+  background-color: beige;
+  height: 80px;
+  width: 100%;
+}
+
+.navbar-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  padding: 0 6em 0 2em;
+}
+
+.navbar-title {
+  display: flex;
+  justify-content: center;
+  font-size: 2.2em;
+  color: #00b7ff;
+  cursor: pointer;
+}
+
+.btn {
+  font-weight: bold;
+  min-width: 80px;
+  height: fit-content;
+  padding: 0.7em;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.navbar-btn-wrapper {
+  display: flex;
+  gap: 1.5em;
+}
+
+.main {
+  width: 1300px;
+  margin: 0 auto;
+}
+
+.main-sign-up {
+  margin-top: 3em;
+}
+
+.main-sign-up h1 {
+  margin-bottom: 0.5em;
+}
+
+.main-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.form-section {
+  font-size: 1.1em;
+}
+
+.form-btn {
+  width: 80px;
 }
