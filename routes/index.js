@@ -29,22 +29,36 @@ router.post("/sign-up", async (req, res, next) => {
   }
 });
 
-router.get("/log-in", function (req, res, next) {
+router.get("/log-in", (req, res, next) => {
   res.render("log-in");
 });
 
-router.post("/log-in", function (req, res, next) {
+router.post(
+  "/log-in",
   passport.authenticate("local", {
-    successRedirect: "/",
+    successRedirect: "/members",
     failureRedirect: "/",
+  })
+);
+
+router.get("/log-out", (req, res, next) => {
+  req.logout(function (err) {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/");
   });
 });
 
-router.post("/new-message", function (req, res, next) {
+router.get("/members", (req, res, next) => {
+  res.render("members");
+});
+
+router.post("/new-message", (req, res, next) => {
   res.render("new-message", { title: "Not implemented yet" });
 });
 
-router.post("/new-message", function (req, res, next) {
+router.post("/new-message", (req, res, next) => {
   res.render("new-message", { title: "Not implemented yet" });
 });
 
